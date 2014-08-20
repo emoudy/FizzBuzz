@@ -1,12 +1,12 @@
 $(document).ready(function(){
 
 	var startNumber = 1;
+	var endNumber;
 	var div1 = 3;
 	var div2 = 5;
 
 
 	function fizzBuzz () {
-	  var endNumber = prompt("Type the number that you would like to check up to.");
 
 	  if (endNumber%1 == 0) {
 			var i;
@@ -29,10 +29,15 @@ $(document).ready(function(){
 		}
 		else {
 			alert("Please type a positive whole number");
-			fizzBuzz();
+			startGame();
 		}
 	};
 
-	fizzBuzz();
+	var startGame = function () {
+		endNumber = prompt("Type the number that you would like to check up to.");
+		fizzBuzz();
+	}
+	
+	startGame();
 
 });
