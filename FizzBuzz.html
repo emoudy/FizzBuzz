@@ -1,0 +1,39 @@
+<! doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FizzBuzz</title>
+	<link rel="stylesheet" href="FizzBuzz.css">
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="FizzBuzz.js"></script>
+</head>
+<body>
+	<div class="main_container">
+		<header>FizzBuzz!</header>
+		
+		<div class="instructions">
+			<p>The object of this game is to see if a range of numbers is evenly dividisble by 3 and 5.</p>
+			<p>If the number is evenly divisible by 3, you will see "Fizz".</p>
+			<p>If the number is evenly divisible by 5, you will see "Buzz".</p>
+			<p>If the number is evenly divisible by both 3 and 5, you will see "FizzBuzz".</p>
+			<p>If the number is NOT divisible by either, you will see the actual number.</p>
+
+			<form id="number_entry">
+				<div class="number_range">
+					<p>What number range that you want to check?</p>
+					<p>From 1 to <input type="text" id="end_number" placeholder="Type a number"></input></p>
+				</div> <!-- end number_range-->
+				<input id="doit_again" type="submit" value="Do it again!"></input>
+			</form> <!--end number_entry-->
+
+		</div><!--end_instruction-->
+
+			<ul>
+			</ul>
+		
+		</div> <!--end instructions-->
+	</div> <!--end main_container-->
+
+
+</body>
+</html>
