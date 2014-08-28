@@ -1,65 +1,62 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-	var startNumber = 1;
 	var endNumber;
-	var div1 = 3;
-	var div2 = 5;
-	var countBlanks = 0;
-	var countall = 0;
-	var countdiv1 = 0;
-	var countdiv2 = 0;
 
 	function fizzBuzz () {
-		var i;
+		var startNumber = 1;
+		var notDivisible = 0;
+		var DivisibleByBoth = 0;
+		var DivisibleByThree = 0;
+		var DivisibleByFive = 0;
 
-		for (i = startNumber; i <= endNumber; i++) {
+		for (startNumber; startNumber <= endNumber; startNumber++) {
 
-			if (!(i%div1 == 0) && !(i%div2 == 0)) {
-				$("ul").append("<li>"+i+"</li>");
-				countBlanks++;
+			if (!(startNumber%3 == 0) && !(startNumber%5 == 0)) {
+				$("ul").append("<li>"+startNumber+"</li>");
+				notDivisible++;
 			}
-			else if (i%div1 == 0 && i%div2 == 0 ) {
-				$("ul").append("<li>FizzBuzz</li>");
-				countall++;
+			else if (startNumber%3 == 0 && startNumber%5 == 0 ) {
+				$("ul").append("<li><strong><em>FIZZBUZZ</em></strong></li>");
+				DivisibleByBoth++;
 			} 
-			else if (i%div1 == 0) {
-				$("ul").append("<li>Fizz</li>");
-				countdiv1++;
+			else if (startNumber%3 == 0) {
+				$("ul").append("<li><strong><em>Fizz<em></strong></li>");
+				DivisibleByThree++;
 			} 
 			else {
-				$("ul").append("<li>Buzz</li>");
-				countdiv2++;
+				$("ul").append("<li><strong><em>Buzz</em></strong></li>");
+				DivisibleByFive++;
 			}; 
 		};
+		$("aside").append("<h3>Results for numbers 1 to " + endNumber + "</h3>");
+		$("aside").append("<p>" + notDivisible + " numbers are <strong>NOT</strong> evenly divisible by 3 or 5</p>");
+		$("aside").append("<p>" + DivisibleByBoth + " numbers are evenly divisible by both 3 and 5</p>");
+		$("aside").append("<p>" + DivisibleByThree + " numbers are evenly divisible by 3 only</p>");
+		$("aside").append("<p>" + DivisibleByFive + " numbers are evenly divisible by 5 only</p>");
 	};
 
-  function getendNumber () {
-    	console.log("working?");
-    $('#end_number').keydown(function(event) {
-      if (event.which == 13) {
-      	event.preventDefault();
-				endNumber = +$("#end_number").val();
-				fizzBuzz();
-				console.log(countBlanks);
-				console.log(countall);
-				console.log(countdiv1);
-				console.log(countdiv2);
-      };
-    });
+  function resetGame () {
+  	$("li").remove();
+  	$("aside").empty();
+  	$("#end_number").val("");
   };
 
-  getendNumber();
+	$("#end_number").keypress(function(event) {
+		if (event.which == 13) {
+			endNumber = Number($("#end_number").val());
+			if ((endNumber%1 !=0)  || (endNumber == "") ||
+					(endNumber < 1) || (endNumber > 100)) {
+				alert("Please choose a whole number between 1 and 100");
+  			resetGame();
+			}
+			else {
+				fizzBuzz();
+			};
+		};
+  });
+
+  $("#doit_again").on("click", function(){
+  		resetGame();
+  });
 
 });
-
-	// function newGame () {
-	// 	$('ul > li').remove();
-	// };
-
-	// $("end_number").on("keydown", function(event){
-	// 	if ($("#end_number").which(event) == 13) {
-	// 		endNumber = $("#end_number").val();
-	// 		console.log("Is this working?");
-	// 		fizzBuzz();
-	// 	};
-	// });
